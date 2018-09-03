@@ -164,7 +164,8 @@ class PlayNine extends Component {
   };
 
   selectNumber = (clickedNumber) => {
-    if (_.indexOf(this.state.selectedNumbers, clickedNumber) >= 0) return ;
+    if (_.indexOf(this.state.selectedNumbers, clickedNumber) >= 0 ||
+      _.indexOf(this.state.usedNumbers, clickedNumber) >= 0) return ;
     this.setState((prevState) => ({
       answerIsCorrect: null,
       selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)

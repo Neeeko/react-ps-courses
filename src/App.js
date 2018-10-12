@@ -32,11 +32,57 @@ class App extends Component {
           <hr />
           <PlayNine />
           <p>TODO: Implement a Timer</p>
+          <h1 className="App-topics">Fiori Sandbox</h1>
+          <FioriTile title="My Awesome Tile" description="My Awesome Description"
+            icon="sap-icon--home" />
+          <FioriDropdown title="My Awesome Modal" content={
+              <div>
+                <b>ReactJS is awesome because I can pass HTML as parameters</b><br /><br />
+                I love: <b>SAPUI5</b><br />
+                And <i>Bill McDermott</i><br /><br />
+              </div>
+            } />
         </div>
       </div>
     );
   };
 };
+
+// {{{ FIORI SANDBOX PROJECT
+
+const FioriTile = (props) => {
+  return (
+    <div className="fd-tile fiori-component">
+      <div className="fd-tile__media">
+        <span className={`fd-identifier--m ${props.icon} fd-has-background-color-accent-3`}></span>
+      </div>
+      <div className="fd-tile__content">
+        <h2 className="fd-tile__title">{props.title}</h2>
+        <p>{props.description}</p>
+      </div>
+    </div>
+  );
+};
+
+const FioriDropdown = (props) => {
+  return (
+    <div className="modal-demo-bg fiori-component">
+      <div className="fd-modal">
+        <div className="fd-modal__content" role="document">
+          <div className="fd-modal__header">
+            <h1 className="fd-modal__title">{props.title}</h1>
+            <button className="fd-button--secondary fd-modal__close" aria-label="close"></button>
+          </div>
+          <div className="fd-modal__body">
+            {props.content}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// }}}
 
 // {{{ PLAY NINE PROJECT
 
@@ -48,7 +94,9 @@ const PlayNineStars = (props) => {
   }
   return (
     <div className="col-5">
-      {stars}
+      <div className="col-lg-6">
+          {stars}
+      </div>
     </div>
   );
 };
